@@ -16,7 +16,24 @@
      */
 
   add_filter("woocommerce_rest_pre_insert_product_object", function($product, $request, $creating) {
-    $product->set_name($product->id . " asdf");
+
+    //If we are creating a product do nothing
+    if($creating)
+      return $product;
+
+    //Let's check the meta what protected fields have been manually edited and set them to the current value
+
+    $current = wc_get_product($product->id);
+
+    $protected_fields = array(
+      'description',
+      'name',
+    );
+
+    foreach($protected_fields as $field) {
+      $product->set_prop($field, $current->$field);
+    }
+
     return $product;
   }, 10, 3);
 
