@@ -31,7 +31,7 @@
     );
 
     foreach($protected_fields as $field) {
-      $product->set_prop($field, $current->$field);
+      $product->{"set_" . $field}($current->$field);
     }
 
     return $product;
