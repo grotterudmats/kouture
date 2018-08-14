@@ -57,7 +57,7 @@ add_action('save_post_product', function ($product_id, $product, $update) {
 
     $edited = empty($edited) ? array() : json_decode($edited);
 
-    foreach (array_keys($product) as $field) {
+    foreach ($product->get_data_keys() as $field) {
         if ($previous_revision->{"get_" . $field}() != $product->{"get_" . $field}()) {
             $edited[] = $key;
         }
