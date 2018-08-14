@@ -56,13 +56,13 @@ add_action('save_post_product', function ($product_id, $product, $update) {
     $edited = get_post_meta($old_product->id, 'edited', true);
 
     $edited = empty($edited) ? array() : json_decode($edited);
-    return;
 
     foreach (array_keys($product) as $key) {
         if ($old_product->$key != $product->$key) {
             $edited[] = $key;
         }
     }
+    return;
 
     $edited = array_unique($edited);
 
