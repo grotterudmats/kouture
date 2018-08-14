@@ -65,6 +65,7 @@ add_action('save_post_product', function ($product_id, $product, $update) {
 
     //Get the previous revision of the product
     $previous_revision = array_shift(wp_get_post_revisions($product_id));
+    $previous_revision = wc_get_product($previous_revision->ID);
 
     $edited = get_post_meta($previous_revision->id, 'edited', true);
 
