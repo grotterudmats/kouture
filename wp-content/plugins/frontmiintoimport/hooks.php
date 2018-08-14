@@ -61,6 +61,7 @@ add_action('save_post_product', function ($product_id, $product, $update) {
         return;
     }
     return;
+    /*
     
     $product = wc_get_product($product_id);
 
@@ -85,4 +86,5 @@ add_action('save_post_product', function ($product_id, $product, $update) {
     $edited = array_unique($edited);
 
     update_post_meta($product_id, 'edited', json_encode($edited));
+     */
 }, 10, 3);
