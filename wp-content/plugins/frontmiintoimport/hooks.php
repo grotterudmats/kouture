@@ -46,7 +46,7 @@ add_filter('woocommerce_rest_pre_insert_product_object', function ($product, $re
  */
 
 add_action('save_post_product', function ($product_id, $product, $update) {
-    if ($update || !isset($_POST)) {
+    if (!$update || !isset($_POST)) {
         return;
     }
 
