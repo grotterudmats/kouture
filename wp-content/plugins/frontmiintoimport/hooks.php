@@ -49,6 +49,8 @@ add_action('save_post_product', function ($product_id, $product, $update) {
     if (!$update || !isset($_POST)) {
         return;
     }
+    
+    $product = wc_get_product($product_id);
 
     //Get the previous revision of the product, should always be the second element
     $previous_revision = wp_get_post_revisions($product_id)[1];
