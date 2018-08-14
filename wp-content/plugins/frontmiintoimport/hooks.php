@@ -51,14 +51,14 @@ add_action('save_post_product', function ($product_id, $product, $update) {
     }
 
     //Get the product before the newer one
-    $old_product = array_shift(wp_get_post_revisions($product_id));
+    $previous_revision = array_shift(wp_get_post_revisions($product_id));
 
-    $edited = get_post_meta($old_product->id, 'edited', true);
+    $edited = get_post_meta($previous_revision->id, 'edited', true);
 
     $edited = empty($edited) ? array() : json_decode($edited);
 
-    foreach (array_keys($product) as $key) {
-        if ($old_product->$key != $product->$key) {
+    foreach (array_keys($product) as $field) {
+        if ($previous_revision->{"get_" . $field}() != $product->{"get_" . $field}()) {
             $edited[] = $key;
         }
     }
