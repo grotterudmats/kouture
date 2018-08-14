@@ -29,7 +29,7 @@ define('DB_USER', 'koutureno');
 define('DB_PASSWORD', '@Kouture123!');
 
 /** MySQL hostname */
-define('DB_HOST', '127.0.0.1:3000');
+define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -86,5 +86,4 @@ if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 
 /** Sets up WordPress vars and included files. */
-define('FORCE_SSL_ADMIN', false);
 require_once(ABSPATH . 'wp-settings.php');
