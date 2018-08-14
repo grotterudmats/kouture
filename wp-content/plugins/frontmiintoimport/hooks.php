@@ -56,14 +56,22 @@ add_filter('woocommerce_rest_pre_insert_product_object', function ($product, $re
  * Hook to add our edited fields to the product meta
  */
 
-add_action('save_post_product', function ($product_id, $product, $update) {
-    if (!$update || !isset($_POST)) {
-        return;
-    }
+add_action('save_post_product', function ($post_id, $product, $update) {
+
+  //$_POST Won't be set if we're not coming from wp-admin 
+  if (!isset($_POST)) {
     return;
+  }
+
+  $product = wc_get_product($post_id);
+  if (!$update) {
+    $edited = array('edited_fields' => array(), 'current' => $product->get_data());
+    update_post_meta($post_id, '_front_miinto_edited_fields', json_encode($edited));
+    return;
+  }
+  return;
     /*
-    
-    $product = wc_get_product($product_id);
+
 
     //Get the previous revision of the product
     $previous_revision = array_shift(wp_get_post_revisions($product_id));
