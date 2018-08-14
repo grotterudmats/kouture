@@ -50,8 +50,8 @@ add_action('save_post_product', function ($product_id, $product, $update) {
         return;
     }
 
-    //Get the product before the newer one
-    $previous_revision = array_shift(wp_get_post_revisions($product_id));
+    //Get the previous revision of the product, should always be the second element
+    $previous_revision = wp_get_post_revisions($product_id)[1];
 
     $edited = get_post_meta($previous_revision->id, 'edited', true);
 
