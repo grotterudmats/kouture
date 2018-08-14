@@ -5,18 +5,6 @@ function plugin_init()
 }
 add_action('init', 'plugin_init');
 
-/* 
- * Add revisions support for woocommerce products
- */
-
-add_filter( 'woocommerce_register_post_type_product', 'wpse_modify_product_post_type' );
-
-function wpse_modify_product_post_type( $args ) {
-     $args['supports'][] = 'revisions';
-
-     return $args;
-}
-
 /*
  * Hook to make sure certain user edited fields are not overwritten when syncing
  */
