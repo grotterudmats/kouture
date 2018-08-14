@@ -66,4 +66,4 @@ add_action('save_post_product', function ($product_id, $product, $update) {
     $edited = array_unique($edited);
 
     update_post_meta($product_id, 'edited', json_encode($edited));
-}, 10, 2);
+}, 10, 3);
