@@ -5,6 +5,17 @@ function plugin_init()
 }
 add_action('init', 'plugin_init');
 
+/* 
+ * Add revisions support for woocommerce products
+ */
+
+add_filter( 'woocommerce_register_post_type_product', 'wpse_modify_product_post_type' );
+
+function wpse_modify_product_post_type( $args ) {
+     $args['supports'][] = 'revisions';
+
+     return $args;
+}
 
 /*
  * Hook to make sure certain user edited fields are not overwritten when syncing
@@ -52,8 +63,8 @@ add_action('save_post_product', function ($product_id, $product, $update) {
     
     $product = wc_get_product($product_id);
 
-    //Get the previous revision of the product, should always be the second element
-    $previous_revision = wp_get_post_revisions($product_id)[1];
+    //Get the previous revision of the product
+    $previous_revision = array_shift(wp_get_post_revisions($product_id));
 
     $edited = get_post_meta($previous_revision->id, 'edited', true);
 
