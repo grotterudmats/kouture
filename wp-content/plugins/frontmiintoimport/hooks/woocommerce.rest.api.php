@@ -3,6 +3,7 @@ add_filter( 'woocommerce_rest_prepare_product_object', 'custom_change_product_re
 add_filter( 'woocommerce_rest_prepare_product_variation_object', 'custom_change_product_response', 20, 3 );
 
 function custom_change_product_response( $response, $object, $request ) {
+  return $response;
   $variations    = $response->data['variations'];
   $variations_res   = array();
   $variations_array = array();
