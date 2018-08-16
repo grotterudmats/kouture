@@ -18,6 +18,7 @@ function custom_change_product_response( $response, $object, $request ) {
       $variations_res['sale_price']    = (float) $variation->sale_price;
       $variations_res['currency']      = get_woocommerce_currency_symbol();
       $variations_res['sku']           = $variation->get_sku();
+      $variations_res['images']           = $variation->get_images();
       $variations_res['description']   = $variation->get_description();
       $variations_res['quantity']      = $variation->get_stock_quantity();
       if ( $variations_res['quantity'] == null ) {
