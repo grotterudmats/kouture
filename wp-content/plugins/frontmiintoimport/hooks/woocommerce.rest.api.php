@@ -12,7 +12,7 @@ function custom_change_product_response( $response, $object, $request ) {
       $variation_id                    = $variation;
       $variation                       = new WC_Product_Variation( $variation_id );
       $variation_attributes            = $variation->get_variation_attributes();
-      array_merge($variation_res, $variation->get_data());
+      $variations_res = array_merge($variation_res, $variation->get_data());
       /*
       $variations_res['variation_id']  = $variation_id;
       $variations_res['on_sale']       = $variation->is_on_sale();
