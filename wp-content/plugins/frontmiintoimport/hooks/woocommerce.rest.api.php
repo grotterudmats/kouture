@@ -32,14 +32,14 @@ function custom_change_product_response( $response, $object, $request ) {
           'src' => wp_get_attachment_image_src($image_id),
         );
       }
-      $variations_res['images'] = $images;
+      $variations_res['image'] = $variation->get_image();
       foreach ( $variation_attributes as $key => $value ) {
         if ( $key == 'attribute_pa_color' ) {
           $variation_attributes[ $key ] = get_color_code_by_name( $value );
         }
       }
       $variations_res['variation_attributes'] = $variation_attributes;
-      $variations_array[]                     = $variations_res;
+      $variations_array[]                     = $variation->get_data();
     }
   }
   $response->data['product_variations'] = $variations_array;
