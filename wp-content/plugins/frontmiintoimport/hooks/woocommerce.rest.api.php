@@ -12,19 +12,22 @@ function custom_change_product_response( $response, $object, $request ) {
       $variation_id                    = $variation;
       $variation                       = new WC_Product_Variation( $variation_id );
       $variation_attributes            = $variation->get_variation_attributes();
+      array_merge($variation_res, $variation->get_data());
+      /*
       $variations_res['variation_id']  = $variation_id;
       $variations_res['on_sale']       = $variation->is_on_sale();
       $variations_res['regular_price'] = (float) $variation->regular_price;
       $variations_res['sale_price']    = (float) $variation->sale_price;
       $variations_res['currency']      = get_woocommerce_currency_symbol();
       $variations_res['sku']           = $variation->get_sku();
-      $variations_res['images']           = $variation->get_images();
+      $variations_res['images']        = $variation->get_images();
       $variations_res['description']   = $variation->get_description();
       $variations_res['quantity']      = $variation->get_stock_quantity();
       if ( $variations_res['quantity'] == null ) {
         $variations_res['quantity'] = '';
       }
       $variations_res['in_stock']        = $variation->is_in_stock();
+       */
       $featured_image                    = wp_get_attachment_image_src( get_post_thumbnail_id( $variation_id ), 'shop_catalog' );
       $variations_res['variation_image'] = $featured_image[0];
       if ( $variations_res['variation_image'] == null ) {
