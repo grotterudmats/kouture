@@ -6,7 +6,7 @@ Plugin Name:  Front Systems + Miinto Product Import
  */
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
-//require_once(__DIR__ . "/hooks.php");
+require_once(__DIR__ . "./hooks/woocommerce.rest.api.php");
 
 
 add_action('admin_init', function() {
