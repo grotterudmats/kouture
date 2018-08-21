@@ -9,6 +9,7 @@ function custom_change_product_response( $response, $object, $request ) {
   $var              = array();
   if ( ! empty( $variations ) && is_array( $variations ) ) {
     foreach ( $variations as $variation ) {
+      /*
       $variation_id                    = $variation;
       $variation                       = new WC_Product_Variation( $variation_id );
       $variation_attributes            = $variation->get_variation_attributes();
@@ -39,6 +40,7 @@ function custom_change_product_response( $response, $object, $request ) {
         }
       }
       $variations_res['variation_attributes'] = $variation_attributes;
+      */
       $variations_array[]                     = $variation->get_data();
     }
   }
