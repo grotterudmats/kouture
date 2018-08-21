@@ -29,7 +29,7 @@ function _custom_nav_menu_item( $title, $url, $order, $parent = 0 ){
 }
 
 add_filter("wp_get_nav_menu_items", function ($items, $menu, $args) {
-	if( $menu->term_id != 24 ) return $items; // Where 24 is Menu ID, so the code won't affect other menus.
+	//if( $menu->term_id != 24 ) return $items; // Where 24 is Menu ID, so the code won't affect other menus.
  
 	// don't add child categories in administration of menus
 	if (is_admin()) {
