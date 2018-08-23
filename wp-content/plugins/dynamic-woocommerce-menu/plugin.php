@@ -30,17 +30,23 @@ function _create_menu_items($title, $url, $order, $parent=0) {
 }
 
 add_filter("wp_get_nav_menu_items", function ($items, $menu, $args) {
-    return $items;
   if(is_admin() || $menu->name != 'Main Menu') {
     return $items;
   }
-      echo "<pre>";
-      print_r($items);
-      echo "</pre>";
 
+  $brands = get_terms('product_brand');
+  $categories = get_terms('product_cat');
+
+	$order = ($items[sizeof($items)-1]->ID)+1;
   foreach($items as $index => $item) {
-    if($item->title == 'Tillbehør') {
+    if($item->title == 'Merker') {
+      foreach($brands as $brand) {
+        $new = _create_menu_items($brand->name, "/brand/" . $brand->slug, $order, $item->ID);
+        $items[] = $new;
+        $order++;
+      }
     }
+    $order++;
   }
   return $items;
 }, 10, 3);
