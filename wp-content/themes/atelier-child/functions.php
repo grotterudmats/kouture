@@ -14,16 +14,10 @@
 	================================================== */
 	function atelier_child_enqueue_styles() {
 	    wp_enqueue_style( 'atelier-parent-style', get_template_directory_uri() . '/style.css' );
-    wp_enqueue_style( 'custom-styling', get_stylesheet_directory_uri() . '/assets/css/kouture.css' );
-    wp_enqueue_script('kouture', get_stylesheet_directory_uri() . '/assets/js/kouture.js', array('jquery'), false, true);
 	
 	}
 	add_action( 'wp_enqueue_scripts', 'atelier_child_enqueue_styles' );
-
-	function sf_atelier_viewport_content() {
-		return "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
-	}
-	add_filter('sf_viewport_content', 'sf_atelier_viewport_content');
+	
 	
 	/* LOAD THEME LANGUAGE
 	================================================== */
