@@ -1,0 +1,33 @@
+/**
+ * Input errors
+ */
+input.bring-error-input.input-text {
+  border: 1px solid;
+  border-bottom-width: 2px;
+}
+
+span.bring-error-message {
+  font-size: 0.8em;
+}
+
+/**
+ * Setting up the colours for the errors
+ */
+[class*="bring-"] {
+  --error-color: #F44336;
+}
+
+@supports ((--variable : style)) {
+  .bring-enter-postcode.bring-error,
+  input.bring-error-input.input-text {
+    border-color: var( --error-color, red ) !important;
+  }
+
+  span.bring-error-message {
+    color: var( --error-color, red ) !important;
+  }
+
+  .bring-button::after {
+    content: "❗️";
+  }
+}
